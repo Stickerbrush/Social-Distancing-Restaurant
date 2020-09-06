@@ -22,17 +22,17 @@ export default class Login extends Component{
                 </div>
 
 
-            <div className="container">
+            <div className="container
+                            border border-dark rounded">
                 <div className="row">
-                    <div className="col-sm-4">
-                        <h3>Column 1</h3>
-                        <p>Lorem ipsum dolor..</p>
-                    </div>
-                    <div className="col-sm-4">
+
+                    <div className="col
+                                    text-center">
                         <h3>Column 2</h3>
                         <p>Lorem ipsum dolor..</p>
                     </div>
-                    <div className="col-sm-4">
+                    <div className="col
+                                    text-center">
                         <h3>Column 3</h3>
                         <p>Lorem ipsum dolor..</p>
                     </div>
