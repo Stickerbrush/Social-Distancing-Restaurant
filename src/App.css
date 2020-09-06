@@ -1,5 +1,13 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  background-image: url("https://i.pinimg.com/originals/81/b2/34/81b234e6d4a79f243357e9f0d928135e.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  display: flex;
+  flex-direction: column;
+
 }
 
 .App-logo {
@@ -14,14 +22,6 @@
 }
 
 .App-header {
-  background-image: url("https://i.pinimg.com/originals/81/b2/34/81b234e6d4a79f243357e9f0d928135e.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }

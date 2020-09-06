@@ -1,0 +1,27 @@
+@font-face {
+    font-family: Lavineta;
+    src:url("lavineta_eisley-webfont.woff");
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background:lightblue;
+
+    backdrop-filter: blur(8px);
+    background: rgb(255, 255, 255, 0.5);
+}
+
+.jumbotron{
+    backdrop-filter: blur(8px);
+
+    background: rgba(255, 255, 255, 0.2) !important;
+
+}
+
+.jumbotron h1{
+    font-family: Lavineta;
+    font-weight: bold;
+    font-size: 100px;
+}
