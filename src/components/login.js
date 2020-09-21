@@ -13,7 +13,6 @@ export default class Login extends Component{
                 <p> XDDDDDD {'7'  + '7' + '7'}</p>
             </React.Fragment>*/
         <div>
-
                 <div  className="jumbotron jumbotron-fluid
                                  text-center
                                  border-bottom border-dark rounded">
