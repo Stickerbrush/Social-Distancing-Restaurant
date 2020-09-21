@@ -28,7 +28,7 @@ export default class Login extends Component{
                     <div className="col
                                     text-center">
                         <h3>Column 2</h3>
-                        <p>Lorem ipsum dolor..</p>
+                        <p>Lorem ipsum dolor...</p>
                     </div>
                     <div className="col
                                     text-center">
