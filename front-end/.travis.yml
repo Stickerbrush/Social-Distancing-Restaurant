@@ -1,3 +1,4 @@
+before_script: cd front-end
 language: node_js
 node_js:
   - '12'
