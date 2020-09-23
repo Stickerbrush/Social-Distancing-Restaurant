@@ -1,25 +1,46 @@
-// using the http module
-let http = require('http'),
+const express = require('express')
+const app = express()
+const port = 5000
 
-// look for PORT environment variable,
-// else look for CLI argument,
-// else use hard coded value for port 8080
-port = process.env.PORT || process.argv[2] || 8080;
+const merchant_model = require('./modeloCliente')
 
-// create a simple server
-let server = http.createServer(function (req, res) {
-
-        res.writeHead(200, {
-            'Content-Type': 'text/plain'
-        });
-        res.write('hello heroku!', 'utf-8');
-        res.end();
-
-    });
-
-// listen on the port
-server.listen(port, function () {
-
-    console.log('app up on port: ' + port);
-
+app.use(express.json())
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers');
+  next();
 });
+
+app.get('/', (req, res) => {
+  modeloCliente.getCliente()
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
+
+app.post('/clientes', (req, res) => {
+  modeloCliente.createCliente(req.body)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
+
+app.delete('/clientes/:telefono', (req, res) => {
+  modeloCliente.deleteMerchant(req.params.telefono)
+  .then(response => {
+    res.status(200).send(response);
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
+app.listen(port, () => {
+  console.log(`App running on port ${port}.`)
+})

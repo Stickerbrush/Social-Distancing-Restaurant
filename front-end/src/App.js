@@ -1,11 +1,70 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
-import Login from "./components/login";
+import LoginHeader from "./components/LoginHeader";
+import LoginInputBox from "./components/LoginInputBox";
+
 
 function App() {
+
+    const [clientes, setClientes] = useState (false);
+    useEffect(() => {
+        getCliente();
+    }, []);
+
+    function getCliente(){
+        fetch('http://https://s-d-r-backend.herokuapp.com:5000')
+            .then(response => {
+                return response.text();
+            })
+            .then(data => {
+                setClientes(data);
+            });
+    }
+
+
+    function createCliente() {
+        let telefono = prompt('Enter client phone number');
+        let nombre = prompt('Enter client name');
+        fetch('http://https://s-d-r-backend.herokuapp.com:5000/clientes', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({telefono, nombre}),
+        })
+            .then(response => {
+                return response.text();
+            })
+            .then(data => {
+                alert(data);
+                getCliente();
+            });
+    }
+
+    function deleteCliente() {
+        let telefono = prompt('Enter client phone number');
+        fetch(`http://https://s-d-r-backend.herokuapp.com:5000/telefono/${telefono}`, {
+            method: 'DELETE',
+        })
+            .then(response => {
+                return response.text();
+            })
+            .then(data => {
+                alert(data);
+                getCliente();
+            });
+    }
+
   return (
     <div className="App">
-      <Login />
+      <LoginHeader />
+      <LoginInputBox />
+
+        {clientes ? clientes : 'There is no client data available'}
+        <br />
+        <button onClick={createCliente}>Add merchant</button>
+        <br />
+        <button onClick={deleteCliente}>Delete merchant</button>
     </div>
   );
 }
