@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { useState, useEffect } from "react";
 import "./LoginStyle.css";
 
 export default class LoginHeader extends Component {
