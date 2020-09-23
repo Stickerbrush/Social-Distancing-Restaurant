@@ -12,7 +12,7 @@ function App() {
     }, []);
 
     function getCliente(){
-        fetch('https://s-d-r-backend.herokuapp.com:5000')
+        fetch('https://s-d-r-backend.herokuapp.com')
         //fetch('http://localhost:5000')
             .then(response => {
                 return response.text();
@@ -26,7 +26,7 @@ function App() {
     function createCliente() {
         let telefono = prompt('Enter client phone number');
         let nombre = prompt('Enter client name');
-        fetch('https://s-d-r-backend.herokuapp.com:5000/clientes', {
+        fetch('https://s-d-r-backend.herokuapp.com/clientes', {
         //fetch('http://localhost:5000/clientes', {
             method: 'POST',
             headers: {
@@ -45,7 +45,7 @@ function App() {
 
     function deleteCliente() {
         let telefono = prompt('Enter client phone number');
-        fetch(`https://s-d-r-backend.herokuapp.com:5000/telefono/${telefono}`, {
+        fetch(`https://s-d-r-backend.herokuapp.com/telefono/${telefono}`, {
         //fetch('http://localhost:5000/clientes/${telefono}', {
             method: 'DELETE',
         })
