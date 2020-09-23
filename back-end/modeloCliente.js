@@ -1,10 +1,9 @@
 const Pool = require('pg').Pool
 const pool = new Pool({
-  user: 'yprvbpsgfyfsls',
-  host: 'ec2-23-23-36-227.compute-1.amazonaws.com',
-  database: 'd3ok37s7f56j5j',
-  password: 'cec675defcad44045415d6932ebc88d04d86080a3e3a4aa348be125256de3bcf',
-  port: 5432,
+  connectionString: 'postgres://yprvbpsgfyfsls:cec675defcad44045415d6932ebc88d04d86080a3e3a4aa348be125256de3bcf@ec2-23-23-36-227.compute-1.amazonaws.com:5432/d3ok37s7f56j5j',
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 
@@ -28,7 +27,9 @@ const createCliente = (body) => {
       if (error) {
         reject(error)
       }
+      if(results !=null){
       resolve(`A new merchant has been added added: ${results.rows[0]}`)
+      }
     })
   })
 }
