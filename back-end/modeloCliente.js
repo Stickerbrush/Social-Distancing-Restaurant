@@ -14,7 +14,10 @@ const getCliente = () => {
       if (error) {
         reject(error)
       }
-      resolve(results.rows);
+      if(results != null){
+        resolve(results.rows);
+      }
+
     })
   })
 }

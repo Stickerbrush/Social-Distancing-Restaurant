@@ -2,11 +2,12 @@ const express = require('express')
 const app = express()
 const port = 5000
 
-const merchant_model = require('./modeloCliente')
+const modeloCliente = require('./modeloCliente')
 
 app.use(express.json())
 app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'https://social-distancing-restaurant.herokuapp.com');
+//  res.setHeader('Access-Control-Allow-Origin', 'https://social-distancing-restaurant.herokuapp.com');
+  res.setHeader('Access-Control-Allow-Origin', 'https://localhost:3000');
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Access-Control-Allow-Headers');
   next();
@@ -33,7 +34,7 @@ app.post('/clientes', (req, res) => {
 })
 
 app.delete('/clientes/:telefono', (req, res) => {
-  modeloCliente.deleteMerchant(req.params.telefono)
+  modeloCliente.deletehant(req.params.telefono)
   .then(response => {
     res.status(200).send(response);
   })
