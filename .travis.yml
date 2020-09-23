@@ -7,7 +7,6 @@ jobs:
   include:
     # ======== Parte del frontend ========
     - language: node_js
-      stage: frontend
       node_js:  '12'
 
       warnings_are_errors: false
@@ -34,7 +33,6 @@ jobs:
 
     # ======== Parte de Backend ========
     - language: node_js
-      stage: backend
       node_js:  '12'
 
       warnings_are_errors: false
@@ -50,6 +48,8 @@ jobs:
       before_install:
         - cd back-end
 
+      before_script:
+        - npm install
       script:
           - node index.js &
 
