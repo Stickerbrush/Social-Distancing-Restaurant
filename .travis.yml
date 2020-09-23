@@ -3,9 +3,6 @@ language: node_js
 node_js:
   - '12'
 dist: trusty
-cache:
-  directories:
-    - node_modules
 script:
     - npm test
     - npm run build
@@ -13,3 +10,55 @@ deploy:
   provider: heroku
   api_key: $APIKEYHEROKU
   app: social-distancing-restaurant
+jobs:
+  include:
+    # ======== Parte del frontend ========
+    - language: node_js
+      node_js:  '12'
+
+      warnings_are_errors: false
+
+      cache:
+        directories:
+          - node_modules
+
+      branches:
+        only:
+          - master
+
+      before_install:
+        - cd front-end
+
+      script:
+          - npm test
+          - npm run build
+
+      deploy:
+        provider: heroku
+        api_key: $APIKEYHEROKU
+        app: social-distancing-restaurant
+
+    # ======== Parte de Backend ========
+    - language: node_js
+      node_js:  '12'
+
+      warnings_are_errors: false
+
+      cache:
+        directories:
+          - node_modules
+
+      branches:
+        only:
+          - master
+
+      before_install:
+        - cd back-end
+
+      script:
+          - node index.js
+
+      deploy:
+        provider: heroku
+        api_key: $APIKEYHEROKU
+        app: s-d-r-backend
