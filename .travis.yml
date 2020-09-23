@@ -3,13 +3,6 @@ language: node_js
 node_js:
   - '12'
 dist: trusty
-script:
-    - npm test
-    - npm run build
-deploy:
-  provider: heroku
-  api_key: $APIKEYHEROKU
-  app: social-distancing-restaurant
 jobs:
   include:
     # ======== Parte del frontend ========
@@ -56,8 +49,7 @@ jobs:
         - cd back-end
 
       script:
-          - npm test
-          - npm run build
+          - npm start
 
       deploy:
         provider: heroku
