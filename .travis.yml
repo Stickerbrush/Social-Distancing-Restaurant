@@ -49,7 +49,7 @@ jobs:
         - cd back-end
 
       script:
-          - npm start
+          - node index.js &
 
       deploy:
         provider: heroku
