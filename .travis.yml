@@ -6,8 +6,8 @@ dist: trusty
 jobs:
   include:
     # ======== Parte del frontend ========
-    - stage: frontend
     - language: node_js
+      stage: frontend
       node_js:  '12'
 
       warnings_are_errors: false
@@ -33,8 +33,8 @@ jobs:
         app: social-distancing-restaurant
 
     # ======== Parte de Backend ========
-    - stage: backend
     - language: node_js
+      stage: backend
       node_js:  '12'
 
       warnings_are_errors: false
