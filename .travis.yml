@@ -56,7 +56,8 @@ jobs:
         - cd back-end
 
       script:
-          - node index.js
+          - npm test
+          - npm run build
 
       deploy:
         provider: heroku
