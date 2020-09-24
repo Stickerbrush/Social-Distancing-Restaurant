@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
-import LoginHeader from "./components/LoginHeader";
-import LoginInputBox from "./components/LoginInputBox";
 import Login from "./components/Login";
 import BarNav from "./components/BarNav";
 
