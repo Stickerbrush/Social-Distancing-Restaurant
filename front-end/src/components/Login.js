@@ -9,23 +9,21 @@ export default class Login extends Component {
                 <div className="loginContainerHijo">
                     <Form>
                         <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" />
-                            <Form.Text className="text-muted">
-                                We'll never share your email with anyone else.
-                        </Form.Text>
+                            <Form.Text className="text-titulo" >
+                                Iniciar Sesión
+                            </Form.Text>
+                            <Form.Control type="email" placeholder="Nombre" />  
                         </Form.Group>
-
                         <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
-                            <Form.Control type="password" placeholder="Password" />
+                            <Form.Control type="password" placeholder="Telefono" />
                         </Form.Group>
                         <Form.Group controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Check me out" />
+                            <Form.Check inline type="checkbox" label="Recordarme?" className="check-switch-checkbox"/>
+                            <Form.Check inline type="switch" label="Trabajador?" className="check-switch-checkbox"/>
                         </Form.Group>
-                        <Button variant="primary" type="submit">
-                            Submit
-                    </Button>
+                        <Button variant="default" type="submit" style={{ color:"white", background:"#FF834E"}}>
+                            Acceder
+                        </Button>
                     </Form>
                 </div>
             </div>
