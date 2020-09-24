@@ -64,8 +64,7 @@ function App() {
         <div className="App">
             <BarNav />
             <Login/>
-            <LoginInputBox />
-
+            <br />
             {clientes ? clientes : 'There is no client data available'}
             <br />
             <button onClick={createCliente}>Add merchant</button>
