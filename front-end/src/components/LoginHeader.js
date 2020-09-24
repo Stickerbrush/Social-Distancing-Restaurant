@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./LoginStyle.css";
+import Login from "./Login";
 
 export default class LoginHeader extends Component{
     state = {
@@ -19,6 +20,7 @@ export default class LoginHeader extends Component{
 
                     <h1>Cafeteria New Wave</h1>
                 </div>
+                <Login></Login>
         </div>
         );
     }
