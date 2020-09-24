@@ -52,6 +52,7 @@ jobs:
 
       before_script:
         - npm install
+        - npm install react-bootstrap bootstrap
       script:
           - node index.js &
 

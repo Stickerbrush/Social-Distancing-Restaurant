@@ -25,3 +25,41 @@
     font-weight: bold;
     font-size: 100px;
 }
+
+.loginContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5%;
+}
+
+.loginContainerHijo{
+    background: rgba(0, 0, 0, 0.5);
+    width: 25%;
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    padding: 2%;
+}
+
+.text-titulo{
+    color: aliceblue;
+    font-size: xx-large;
+}
+
+.check-checkbox{
+    color: aliceblue;
+}
+.check-switch{
+    color: aliceblue;
+}
+
+.btn-primary{
+    color: #fff;
+    background-color: #9bec3d;
+    background-color: cutom-color;
+    border-color: #2E4C80;
+    border-color: cutom-cor;
+}
+
+
