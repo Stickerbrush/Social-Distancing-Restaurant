@@ -4,7 +4,7 @@
   background-image: url("./img/tabla-madera-sobremesa-vacia-fondo-borroso_1253-1584.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-
+  background-position: center center;
   display: flex;
   flex-direction: column;
 
