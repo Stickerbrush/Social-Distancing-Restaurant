@@ -35,12 +35,23 @@
 
 .loginContainerHijo{
     background: rgba(0, 0, 0, 0.5);
-    width: 25%;
     border-radius: 20px 20px 20px 20px;
     -moz-border-radius: 20px 20px 20px 20px;
     -webkit-border-radius: 20px 20px 20px 20px;
     padding: 2%;
+    display: inline-block;
+    position: relative;
+    background-size: contain;
+    max-width: 35%;
 }
+
+@media screen and (max-width: 900px) {
+    .loginContainerHijo{
+        max-width: 80%;
+        min-width: 35%;
+    }
+}
+
 
 .text-titulo{
     color: aliceblue;
