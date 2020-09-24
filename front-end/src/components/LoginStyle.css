@@ -26,6 +26,19 @@
     font-size: 100px;
 }
 
-.loginContatiner{
-    background: rgba(0, 0, 0, .5);
+.loginContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.loginContainerHijo{
+    background: rgba(0, 0, 0, 0.5);
+    width: 35%;
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    padding: 1%;
+}
+
+
