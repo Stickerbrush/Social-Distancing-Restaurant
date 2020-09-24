@@ -47,7 +47,10 @@
     font-size: xx-large;
 }
 
-.check-switch-checkbox{
+.check-checkbox{
+    color: aliceblue;
+}
+.check-switch{
     color: aliceblue;
 }
 
