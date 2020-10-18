@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import Login from "./components/Login";
 import BarNav from "./components/BarNav";
-
+import CustomerOptions from "./components/CustomerOptions"
 
 function App() {
 
@@ -62,6 +62,7 @@ function App() {
         <div className="App">
             <BarNav />
             <Login/>
+            <CustomerOptions/>
             <br />
             {clientes ? clientes : 'There is no client data available'}
             <br />
