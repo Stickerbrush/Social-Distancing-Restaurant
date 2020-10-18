@@ -3,6 +3,11 @@ import { Button, Form } from 'react-bootstrap';
 import "./LoginStyle.css";
 
 export default class Login extends Component {
+
+    AccederEvent() {
+        alert("AccederEvent!");
+    }
+
     render() {
         return (
             <div className="loginContainer">
@@ -31,6 +36,7 @@ export default class Login extends Component {
                                 className="check-switch" />
                         </Form.Group>
                         <Button
+                            onClick={this.AccederEvent}
                             variant="default"
                             type="submit"
                             style={{ color: "white", background: "#FF834E" }}>
