@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { Button } from 'react-bootstrap';
 import "./CustomerOptionsStyle.css";
+import { Login } from "./Login";
+let LoginObj = Login.getInstance();
 
-export default class CustomerOptions extends Component {
+export class CustomerOptions extends Component {
 
     ReservarEvent() {
         alert("ReservarEvent!");
+        LoginObj.Ocultar()
     }
 
     IngresarAlRestauranteEvent() {
@@ -38,3 +41,4 @@ export default class CustomerOptions extends Component {
     }
 }
 
+export default CustomerOptions;
