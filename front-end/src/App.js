@@ -6,6 +6,7 @@ import CustomerOptions from "./components/CustomerOptions"
 
 function App() {
 
+
     const [clientes, setClientes] = useState(false);
     useEffect(() => {
         getCliente();
@@ -21,7 +22,6 @@ function App() {
                 setClientes(data);
             });
     }
-
 
     function createCliente() {
         let telefono = prompt('Enter client phone number');
@@ -61,12 +61,12 @@ function App() {
     return (
         <div className="App">
             <BarNav />
-            <Login/>
-            <CustomerOptions/>
+            <Login />
+            <CustomerOptions />
             <br />
             {clientes ? clientes : 'There is no client data available'}
             <br />
-            <button onClick={createCliente}>Add merchant</button>
+            <button onClick={createCliente}>Add merchant </button>
             <br />
             <button onClick={deleteCliente}>Delete merchant</button>
         </div>

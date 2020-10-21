@@ -2,11 +2,19 @@ import React, { Component } from "react";
 import { Button, Form } from 'react-bootstrap';
 import "./LoginStyle.css";
 
-export default class Login extends Component {
+export class Login extends Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            mostrar: true
+        };
+    }
 
     AccederEvent() {
-        alert("AccederEvent!");
+        
     }
+
 
     render() {
         return (
@@ -36,16 +44,16 @@ export default class Login extends Component {
                                 className="check-switch" />
                         </Form.Group>
                         <Button
-                            onClick={this.AccederEvent}
+                            onClick={this.props.clickCerrarLogin}
                             variant="default"
                             type="submit"
                             style={{ color: "white", background: "#FF834E" }}>
                             Acceder
-                        </Button>
+                                    </Button>
                     </Form>
                 </div>
-            </div>
+            </div >
         );
     }
 }
-
+export default Login;
