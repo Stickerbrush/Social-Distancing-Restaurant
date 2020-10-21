@@ -12,11 +12,8 @@ export class Login extends Component {
         };
     }
 
-
-    Mostrar() { this.setState({ mostrar: true }) }
-    Ocultar() { this.setState({ mostrar: false }) }
     AccederEvent() {
-       return(this.props.clickCerrarLogin );
+        
     }
 
 
@@ -27,7 +24,7 @@ export class Login extends Component {
                     <Form>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Text className="text-titulo" >
-                                Iniciar Sesión {this.props.clickCerrar}
+                                Iniciar Sesión
                             </Form.Text>
                             <Form.Control type="email" placeholder="Nombre" />
                         </Form.Group>
@@ -48,7 +45,7 @@ export class Login extends Component {
                                 className="check-switch" />
                         </Form.Group>
                         <Button
-                            onClick={this.AccederEvent}
+                            onClick={this.props.clickCerrarLogin}
                             variant="default"
                             type="submit"
                             style={{ color: "white", background: "#FF834E" }}>
@@ -56,7 +53,7 @@ export class Login extends Component {
                                     </Button>
                     </Form>
                 </div>
-            </div>
+            </div >
         );
     }
 }
