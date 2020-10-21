@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Button } from 'react-bootstrap';
 import "./CustomerOptionsStyle.css";
-import { Login } from "./Login";
 
 export class CustomerOptions extends Component {
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './App.css';
 import Login from "./components/Login";
 import BarNav from "./components/BarNav";
@@ -33,13 +33,10 @@ export class App2 extends React.Component {
             <div className="App">
                 <BarNav />
                 {this.state.loginVisible &&
-                    <Login
-                        clickCerrarLogin={this.closeLogin}
-                        clickAbirCustomerOption={this.openCustomerOption} />
+                    <Login clickCerrarLogin={this.closeLogin}/>
                 }
                 {this.state.customerOptionVisible &&
-                    <CustomerOptions
-                        clickOpen={this.openLogin} />
+                    <CustomerOptions clickOpen={this.openLogin} />
                 }
             </div>
         );
