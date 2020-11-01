@@ -54,7 +54,7 @@ jobs:
         - npm install
         - npm install react-bootstrap bootstrap
       script:
-          - node index.js &
+          - node db_server.js &
 
       deploy:
         provider: heroku
