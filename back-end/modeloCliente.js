@@ -35,6 +35,7 @@ const createCliente = (body) => {
     })
   })
 }
+
 const deleteCliente = () => {
   return new Promise(function(resolve, reject) {
     const telefono = request.params.telefono
