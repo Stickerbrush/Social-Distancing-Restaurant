@@ -44,7 +44,7 @@ export class SingUp extends Component {
                                 className="check-switch" />
                         </Form.Group>
                         <Button
-                            onClick={this.props.clickCerrarLogin}
+                            onClick={this.props.clickCerrarSingUp}
                             variant="default"
                             type="submit"
                             style={{ color: "white", background: "#FF834E" }}>
@@ -56,4 +56,4 @@ export class SingUp extends Component {
         );
     }
 }
-export default Login;
+export default SingUp;

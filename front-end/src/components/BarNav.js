@@ -20,8 +20,8 @@ export default class BarNav extends Component {
                     <Nav className="mr-auto">
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#deets">Registrarse</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">Acceder</Nav.Link>
+                        <Nav.Link href="#SingUp" onClick={this.props.clickAbrirSingUp}>Registrarse</Nav.Link>
+                        <Nav.Link eventKey={2} href="#SingIn" onClick={this.props.clickAbrirLogin}>Acceder</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
