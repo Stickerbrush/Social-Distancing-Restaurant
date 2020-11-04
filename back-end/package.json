@@ -2,7 +2,7 @@
   "name": "postgres",
   "version": "1.0.0",
   "description": "Back-end for the project",
-  "main": "index.js",
+  "main": "db_server.js.js",
   "scripts": {
     "start": "node db_server.js &",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,5 +12,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "pg": "^8.3.3"
+  },
+  "engines": {
+    "node": "8.9.3"
   }
 }
