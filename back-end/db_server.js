@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = process.env.PORT || 5000
+const port = (process.env.PORT || 5000)
 
 const modeloCliente = require('./modeloCliente')
 const modeloEmpleado = require('./modeloEmpleado')
@@ -43,6 +43,7 @@ app.delete('/clientes/:telefono', (req, res) => {
     res.status(500).send(error);
   })
 })
+
 app.listen(port, () => {
   console.log(`App running on port ${port}.`)
 })
