@@ -25,10 +25,10 @@ export class Login extends Component {
                             <Form.Text className="text-titulo" >
                                 Iniciar Sesión
                             </Form.Text>
-                            <Form.Control type="email" placeholder="Nombre" />
+                            <Form.Control placeholder="Telefono" />
                         </Form.Group>
                         <Form.Group controlId="formBasicPassword">
-                            <Form.Control type="password" placeholder="Telefono" />
+                            <Form.Control type="password" placeholder="Contraseña" />
                         </Form.Group>
                         <Form.Group controlId="formBasicCheckbox">
                             <Form.Check
