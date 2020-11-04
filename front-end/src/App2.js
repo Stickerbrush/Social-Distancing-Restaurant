@@ -4,13 +4,15 @@ import Login from "./components/Login";
 import BarNav from "./components/BarNav";
 import CustomerOptions from "./components/CustomerOptions";
 import SingUp from "./components/SingUp";
+import EnterTheRestaurat from "./components/EnterTheRestaurant";
 
 export class App2 extends React.Component {
 
     state = {
-        loginVisible: true,
+        loginVisible: false,
         singUpVisible : false,
-        customerOptionVisible: false
+        customerOptionVisible: false,
+        enterTheRestaurantVisible: true
     }
 
     openLogin = () => {
@@ -43,6 +45,14 @@ export class App2 extends React.Component {
         this.setState({ customerOptionVisible: false })
     }
 
+    openEnterTheRestaurant = () => {
+        this.setState({ enterTheRestaurantVisible: true })
+    }
+
+    closeEnterTheRestaurant = () => {
+        this.setState({ enterTheRestaurantVisible: false })
+    }
+
     render() {
         return (
             <div className="App">
@@ -54,7 +64,10 @@ export class App2 extends React.Component {
                     <SingUp clickCerrarSingUp={this.closeSingUp}/>
                 }
                 {this.state.customerOptionVisible &&
-                    <CustomerOptions clickOpen={this.openLogin} />
+                    <CustomerOptions clickOpen={this.openLogin} clickEnterTheRestaurant={this.openEnterTheRestaurant}/>
+                }
+                {this.state.enterTheRestaurantVisible &&
+                    <EnterTheRestaurat/>
                 }
             </div>
         );

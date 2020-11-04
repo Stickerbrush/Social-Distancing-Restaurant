@@ -37,7 +37,7 @@ export class CustomerOptions extends Component {
                             <Button
                                 variant="light"
                                 size="lg"
-                                onClick={this.IngresarAlRestauranteEvent}>
+                                onClick={this.props.clickEnterTheRestaurant}>
                                 Ingresar al restaurante
                         </Button>
                         </div>
