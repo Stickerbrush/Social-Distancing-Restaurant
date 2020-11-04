@@ -1,7 +1,3 @@
-@font-face {
-    font-family: Lavineta;
-    src:url("lavineta_eisley-webfont.woff");
-}
 
 .container{
     display: flex;
@@ -20,11 +16,6 @@
 
 }
 
-.jumbotron h1{
-    font-family: Lavineta;
-    font-weight: bold;
-    font-size: 100px;
-}
 
 .loginContainer{
     display: flex;
@@ -73,4 +64,9 @@
     border-color: cutom-cor;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 

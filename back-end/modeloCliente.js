@@ -7,9 +7,10 @@ const pool = new Pool({
 });
 
 
-const getCliente = () => {
+const getCliente = (cedula, contrasena) => {
+  console.log('SELECT * FROM clientes WHERE (cedula = $1 and password = $2)', [cedula, contrasena]);
   return new Promise(function(resolve, reject) {
-    pool.query('SELECT * FROM clientes', (error, results) => {
+    pool.query('SELECT * FROM clientes WHERE (cedula = $1 and password =  $2)', [cedula, contrasena] ,(error, results) => {
       if (error) {
         reject(error)
       }
@@ -20,6 +21,7 @@ const getCliente = () => {
     })
   })
 }
+
 const createCliente = (body) => {
   return new Promise(function(resolve, reject) {
     const { telefono, nombre } = body

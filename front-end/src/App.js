@@ -1,76 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './App.css';
+import {Route, Switch, Redirect, BrowserRouter } from "react-router-dom";
 import Login from "./components/Login";
+import ControllerLogin from "./classes/ControllerLogin";
 import BarNav from "./components/BarNav";
-import CustomerOptions from "./components/CustomerOptions"
+import Signup from "./components/Signup";
+import CustomerOptions from "./components/CustomerOptions";
+import history from "./history";
 
-function App() {
-
-
-    const [clientes, setClientes] = useState(false);
-    useEffect(() => {
-        getCliente();
-    }, []);
-
-    function getCliente() {
-        fetch('https://s-d-r-backend.herokuapp.com')
-            //fetch('http://localhost:5000')
-            .then(response => {
-                return response.text();
-            })
-            .then(data => {
-                setClientes(data);
-            });
+export class App extends React.Component {
+    state = {
+        logged_user: ''
     }
 
-    function createCliente() {
-        let telefono = prompt('Enter client phone number');
-        let nombre = prompt('Enter client name');
-        fetch('https://s-d-r-backend.herokuapp.com/clientes', {
-            //fetch('http://localhost:5000/clientes', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ telefono, nombre }),
-        })
-            .then(response => {
-                return response.text();
-            })
-            .then(data => {
-                alert(data);
-                getCliente();
-            });
+    render() {
+        return (
+            <div className="App">
+                <BarNav/>
+                <BrowserRouter history={ history }>
+                    <Switch>
+                        <Route exact path="/" render={ ()=><Redirect to="/login"/>} />
+                        <Route path="/login" component={Login} />
+                        <Route path="/mainmenu" component={CustomerOptions}/>
+                        <Route path="/signup" component={Signup}/>
+                    </Switch>
+                </BrowserRouter>
+            </div>
+        );
     }
-
-    function deleteCliente() {
-        let telefono = prompt('Enter client phone number');
-        fetch(`https://s-d-r-backend.herokuapp.com/telefono/${telefono}`, {
-            //fetch('http://localhost:5000/clientes/${telefono}', {
-            method: 'DELETE',
-        })
-            .then(response => {
-                return response.text();
-            })
-            .then(data => {
-                alert(data);
-                getCliente();
-            });
-    }
-
-    return (
-        <div className="App">
-            <BarNav />
-            <Login />
-            <CustomerOptions />
-            <br />
-            {clientes ? clientes : 'There is no client data available'}
-            <br />
-            <button onClick={createCliente}>Add merchant </button>
-            <br />
-            <button onClick={deleteCliente}>Delete merchant</button>
-        </div>
-    );
 }
 
 export default App;
