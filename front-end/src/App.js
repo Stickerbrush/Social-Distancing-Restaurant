@@ -3,7 +3,6 @@ import './App.css';
 import {Route, Switch, Redirect, BrowserRouter } from "react-router-dom";
 import Login from "./components/Login";
 import BarNav from "./components/BarNav";
-import Signup from "./components/Signup";
 import CustomerOptions from "./components/CustomerOptions";
 import history from "./history";
 
@@ -21,7 +20,6 @@ export class App extends React.Component {
                         <Route exact path="/" render={ ()=><Redirect to="/login"/>} />
                         <Route path="/login" component={Login} />
                         <Route path="/mainmenu" component={CustomerOptions}/>
-                        <Route path="/signup" component={Signup}/>
                     </Switch>
                 </BrowserRouter>
             </div>
