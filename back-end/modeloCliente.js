@@ -24,8 +24,8 @@ const getCliente = (cedula, contrasena) => {
 
 const createCliente = (body) => {
   return new Promise(function(resolve, reject) {
-    const { telefono, nombre } = body
-    pool.query('INSERT INTO clientes (telefono, nombre) VALUES ($1, $2) RETURNING *', [telefono, nombre], (error, results) => {
+    const { cedula, nombre, telefono, password } = body
+    pool.query('INSERT INTO clientes (cedula, telefono, nombre, password) VALUES ($1, $2, $3, $4) RETURNING *', [cedula, telefono, nombre, password] , (error, results) => {
       if (error) {
         reject(error)
       }

@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import {Route, Switch, Redirect, BrowserRouter } from "react-router-dom";
+import {Route, Switch, Redirect } from "react-router-dom";
 import Login from "./components/Login";
 import BarNav from "./components/BarNav";
 import CustomerOptions from "./components/CustomerOptions";
-import history from "./history";
-
+import GestionReservasCliente from "./components/GestionReservasCliente";
+import SignUp from "./components/SignUp";
 export class App extends React.Component {
     state = {
         logged_user: ''
@@ -15,13 +15,13 @@ export class App extends React.Component {
         return (
             <div className="App">
                 <BarNav/>
-                <BrowserRouter history={ history }>
                     <Switch>
                         <Route exact path="/" render={ ()=><Redirect to="/login"/>} />
                         <Route path="/login" component={Login} />
+                        <Route path="/registro" component={SignUp} />
+                        <Route path="/reservas" component={GestionReservasCliente} />
                         <Route path="/mainmenu" component={CustomerOptions}/>
                     </Switch>
-                </BrowserRouter>
             </div>
         );
     }

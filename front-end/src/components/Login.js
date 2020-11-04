@@ -1,18 +1,21 @@
 import React, { Component } from "react";
 import { Button, Form } from 'react-bootstrap';
-import history from '../history';
 import axios from "axios";
+import "../global";
 import "./LoginStyle.css";
+import {Redirect} from "react-router-dom";
+
 
 export class Login extends Component {
-    fetch_addr = 'https://s-d-r-backend.herokuapp.com';
+
     state = {
         mostrar: true,
         datos_cliente: '',
         cedula: '',
         password: '',
         trabajador: false,
-        sending: false
+        sending: false,
+        redirect: false
     };
 
     constructor(props) {
@@ -23,28 +26,15 @@ export class Login extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.validateLogin = this.validateLogin.bind(this);
         this.handleToggleButton = this.handleToggleButton.bind(this);
-        this.componentWillUnmount = this.componentWillUnmount.bind(this);
-        this.changeRoute = this.changeRoute.bind(this);
     }
 
-    componentWillUnmount() {
-        this.setState = (state,callback)=>{
-            return null;
-        };
-    }
-
-    changeRoute() {
-        let path = 'mainmenu';
-        history.push(path);
-    }
 
     validateLogin(data) {
         console.log(data[0])
         console.log(data.length > 0)
         if(data.length > 0){
             alert("bienvenido/a " + data[0].nombre)
-            history.push("/mainmenu")
-            // this.props.clickCerrarLogin(this.state.datos_cliente)
+            this.setState({redirect: true})
         } else{
             alert("Login fallido, porfavor escriba las credenciales correctas");
         }
@@ -74,7 +64,7 @@ export class Login extends Component {
     }
 
     getEmpleado(empleado_id, contrasena_empleado){
-        axios.get( this.fetch_addr + "/empleados/"  + empleado_id + "/" + contrasena_empleado)
+        axios.get( global.fetch_addr + "/empleados/"  + empleado_id + "/" + contrasena_empleado)
             .then(response => {
                 this.setState ({datos_cliente: response.data, sending: false},
                     this.validateLogin(response.data))
@@ -83,7 +73,7 @@ export class Login extends Component {
 
     getCliente(cedula_cliente, contrasena_cliente){
         let cedula = parseInt(cedula_cliente);
-        axios.get(this.fetch_addr + "/clientes/"+  cedula+ "/"+ contrasena_cliente)
+        axios.get(global.fetch_addr + "/clientes/"+  cedula+ "/"+ contrasena_cliente)
         .then(response => {
             this.setState ({datos_cliente: response.data, sending: false},
                 this.validateLogin(response.data))
@@ -91,7 +81,12 @@ export class Login extends Component {
     }
 
     render() {
+        if(this.state.redirect){
+            return(<Redirect to="/mainmenu"/>)
+        }
+
         return (
+
                 <div className="loginContainer">
                 <div className="loginContainerHijo">
                     <Form>
@@ -124,6 +119,13 @@ export class Login extends Component {
                                 label="Trabajador?"
                                 className="check-switch"
                                 onChange={this.handleToggleButton}
+                            />
+
+                            <Form.Check
+                                inline
+                                type="checkbox"
+                                label="Recordarme?"
+                                className="check-checkbox"
                             />
                         </Form.Group>
                         <Button

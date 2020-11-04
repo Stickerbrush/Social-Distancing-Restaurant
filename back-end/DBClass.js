@@ -2,9 +2,17 @@ const express = require('express')
 const modeloCliente = require('./modeloCliente')
 const modeloEmpleado = require('./modeloEmpleado')
 
-class DBClass {
+let instance = null
 
-    constructor(props) {
+class DBClass {
+    static getInstance() {
+     if(!instance) {
+         instance = new DBClass()
+     }
+      return instance
+   }
+
+    constructor() {
      this.app = express()
      this.port = process.env.PORT || 5000
 
@@ -21,16 +29,52 @@ class DBClass {
       });
     }
 
-    get conn() {
-     return this._conn
-    }
+    monitor() {
+      this.app.listen(this.port, () => {
+        console.log(`App running on port ${this.port}.`)
+      })
 
-    static getInstance() {
-     if(!instance) {
-         instance = new DBClass()
-     }
+      this.app.get('/clientes/:cedula/:contrasena', (req, res) => {
+        modeloCliente.getCliente(req.params.cedula, req.params.contrasena)
+        .then(response => {
+          res.status(200).send(response);
+        })
+        .catch(error => {
+          res.status(500).send(error);
+        })
+      })
 
-     return instance
+      this.app.post('/clientes', (req, res) => {
+        modeloCliente.createCliente(req.body)
+        .then(response => {
+          res.status(200).send(response);
+        })
+        .catch(error => {
+          res.status(500).send(error);
+        })
+      })
+
+      this.app.delete('/clientes/:telefono', (req, res) => {
+        modeloCliente.deletehant(req.params.telefono)
+        .then(response => {
+          res.status(200).send(response);
+        })
+        .catch(error => {
+          res.status(500).send(error);
+        })
+      })
+
+
+
+      this.app.get('/empleados/:id/:contrasena', (req, res) => {
+        modeloEmpleado.getEmpleado(req.params.id, req.params.contrasena)
+        .then(response => {
+          res.status(200).send(response);
+        })
+        .catch(error => {
+          res.status(500).send(error);
+        })
+      })
     }
 }
 

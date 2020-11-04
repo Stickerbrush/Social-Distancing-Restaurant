@@ -1,10 +1,28 @@
 import React, { Component } from "react";
 import { Navbar, Nav } from 'react-bootstrap';
+import { Redirect } from "react-router-dom";
 import "./BarNav.css";
 import logo from "../img/Logo-MataHambre.svg";
 
 export default class BarNav extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            redirect: false
+        }
+        this.redirectToRegistro = this.redirectToRegistro.bind(this);
+    }
+
+    redirectToRegistro(){
+        this.setState({redirect: true})
+    }
+
     render() {
+
+        if(this.state.redirect){
+            return(<Redirect to="/login"/>)
+        }
+
         return (
             <Navbar className="Navbar" collapseOnSelect expand="lg" variant="dark">
                 <div className="logo-container">
@@ -20,8 +38,8 @@ export default class BarNav extends Component {
                     <Nav className="mr-auto">
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#deets">Registrarse</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">Acceder</Nav.Link>
+                        <Nav.Link href="/registro">Registrarse</Nav.Link>
+                        <Nav.Link href="/login">Acceder</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
