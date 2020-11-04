@@ -53,7 +53,7 @@ jobs:
       before_script:
         - npm install
       script:
-          - node db_server.js &
+          - npm start
 
       deploy:
         provider: heroku
