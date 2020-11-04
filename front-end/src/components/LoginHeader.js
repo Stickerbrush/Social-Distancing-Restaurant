@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./LoginStyle.css";
-import Login from "./Login";
-
 export default class LoginHeader extends Component {
     state = {
         count: 0

@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import {Route, Switch, Redirect, BrowserRouter } from "react-router-dom";
 import Login from "./components/Login";
-import ControllerLogin from "./classes/ControllerLogin";
 import BarNav from "./components/BarNav";
 import Signup from "./components/Signup";
 import CustomerOptions from "./components/CustomerOptions";
