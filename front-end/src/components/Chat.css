@@ -1,0 +1,11 @@
+.rcw-conversation-container > .rcw-header {
+    background-color:rgb(43,43,43);
+}
+.rcw-message > .rcw-response > .rcw-message-text{
+    background: linear-gradient(to right,rgb(70,70,70),rgb(43,43,43)); 
+    color: rgb(255, 255, 255);
+}
+.rcw-message > .rcw-client > .rcw-message-text{
+    background: linear-gradient(to right,rgb(255,153,109),#FF834E); 
+    color: rgb(255, 255, 255);
+}
