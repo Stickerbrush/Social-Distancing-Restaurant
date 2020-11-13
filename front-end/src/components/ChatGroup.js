@@ -10,8 +10,8 @@ class ChatGroup extends Component {
             <div className="chatContainer"> 
                 <div className="chatContainerHijo">
                     <RestaurantMenu/>
-                </div> 
-                <Chat/> 
+                </div>
+                <Chat/>
             </div>
         );
     }

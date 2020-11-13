@@ -13,11 +13,13 @@
     background-size: contain;
     justify-content: center;
     top:2pc;
+    width: 80%;
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 500px) {
     .chatContainerHijo{
-        max-width: 80%;
-        min-width: 35%;
+        width: auto;
+        padding: 0% 2% 0% 2%;
     }
+
 }
