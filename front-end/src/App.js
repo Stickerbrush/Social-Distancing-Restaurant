@@ -6,8 +6,7 @@ import BarNav from "./components/BarNav";
 import CustomerOptions from "./components/CustomerOptions";
 import GestionReservasCliente from "./components/GestionReservasCliente";
 import SignUp from "./components/SignUp";
-import Chat from "./components/Chat";
-import RestaurantMenu from "./components/RestaurantMenu";
+import ChatGroup from "./components/ChatGroup";
 export class App extends React.Component {
     state = {
         logged_user: ''
@@ -23,8 +22,7 @@ export class App extends React.Component {
                         <Route path="/registro" component={SignUp} />
                         <Route path="/reservas" component={GestionReservasCliente} />
                         <Route path="/mainmenu" component={CustomerOptions}/>
-                        <Route path="/chat" component={Chat} />
-                        <Route path="/restaurantmenu" component={RestaurantMenu} />
+                        <Route path="/chatgroup" component={ChatGroup} />
                     </Switch>
             </div>
         );

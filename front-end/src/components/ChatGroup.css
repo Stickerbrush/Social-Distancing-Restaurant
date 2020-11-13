@@ -1,0 +1,23 @@
+.chatContainer{
+    display: flex;
+    justify-content: center;
+    background-size: contain;
+}
+
+.chatContainerHijo{
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    display: inline-block;
+    position: relative;
+    background-size: contain;
+    justify-content: center;
+    top:2pc;
+}
+
+@media screen and (max-width: 900px) {
+    .chatContainerHijo{
+        max-width: 80%;
+        min-width: 35%;
+    }
+}
