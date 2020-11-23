@@ -1,27 +1,29 @@
 const Pool = require('pg').Pool
 const pool = new Pool({
-  connectionString: 'postgres://yprvbpsgfyfsls:cec675defcad44045415d6932ebc88d04d86080a3e3a4aa348be125256de3bcf@ec2-23-23-36-227.compute-1.amazonaws.com:5432/d3ok37s7f56j5j',
+  connectionString:'postgres://yprvbpsgfyfsls:cec675defcad44045415d6932ebc88d04d86080a3e3a4aa348be125256de3bcf@ec2-23-23-36-227.compute-1.amazonaws.com:5432/d3ok37s7f56j5j',
     ssl: {
         rejectUnauthorized: false
     }
 });
 
+class ModeloEmpleado {
 
-const getEmpleado = (id, contrasena) => {
-  console.log('SELECT * FROM empleados WHERE (id = $1 and password = $2)', [id, contrasena]);
-  return new Promise(function(resolve, reject) {
-    pool.query('SELECT * FROM empleados WHERE (id = $1 and password = $2)', [id, contrasena] ,(error, results) => {
-      if (error) {
-        reject(error)
-      }
-      if(results != null){
-        resolve(results.rows);
-      }
+  getEmpleado (id, contrasena) {
+    console.log('SELECT * FROM empleados WHERE (id = $1 and password = $2)', [id, contrasena]);
+    return new Promise(function(resolve, reject) {
+      pool.query('SELECT * FROM empleados WHERE (id = $1 and password = $2)', [id, contrasena] ,(error, results) => {
+        if (error) {
+          console.log(error);
+          reject(error)
+        }
+        if(results != null){
+          console.log(results);
+          resolve(results.rows);
+        }
 
+      })
     })
-  })
+  }
 }
 
-module.exports = {
-  getEmpleado,
-}
+module.exports = ModeloEmpleado;
