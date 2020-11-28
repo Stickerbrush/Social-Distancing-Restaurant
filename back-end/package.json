@@ -2,9 +2,9 @@
   "name": "postgres",
   "version": "1.0.0",
   "description": "Back-end for the project",
-  "main": "db_server.js.js",
+  "main": "db_server.js.",
   "scripts": {
-    "start": "node db_server.js &",
+    "start": "node db_server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -13,7 +13,8 @@
     "express": "^4.17.1",
     "moment": "^2.29.1",
     "moment-range": "^4.0.2",
-    "pg": "^8.3.3"
+    "pg": "^8.3.3",
+    "socket.io": "^3.0.3"
   },
   "engines": {
     "node": "8.9.3"

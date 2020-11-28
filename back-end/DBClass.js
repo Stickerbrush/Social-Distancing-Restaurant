@@ -1,5 +1,32 @@
 const express = require('express')
 const ControllerFactory = require('./ControllerFactory')
+const http = require('http');
+
+const chat_app = express();
+const chat_server = http.createServer(chat_app);
+const io = require("socket.io")(chat_server, {
+  cors: {
+    origin: '*',
+  }
+});
+
+const chat_port = process.env.PORT+1 || 5001
+
+chat_server.listen(chat_port, () => console.log(`Chat server started on port ${chat_port}`))
+
+io.on('connection', (socket) => {
+  console.log('User connected');
+
+  socket.on('disconnect', () => {
+    console.log("user left");
+  })
+
+  socket.on('sendMessage', (message) => {
+    console.log(message)
+    socket.emit('message', "Boca sho te amo")
+  })
+})
+
 
 let instance = null
 
@@ -12,7 +39,9 @@ class DBClass {
    }
 
     constructor() {
-     this.app = express()
+     this.app = express();
+     //this.chat_server = http.createServer(this.app);
+    // this.io = socketio(this.chat_server);
      this.port = process.env.PORT || 5000
      this.modeloCliente = ControllerFactory.createController("Cliente");
      this.modeloEmpleado = ControllerFactory.createController("Empleado");
@@ -31,6 +60,13 @@ class DBClass {
     }
 
     monitor() {
+      /*#######################CHAT MONITORING##############################*/
+
+
+
+
+      /*#######################DB SERVER MONITORING##############################*/
+
       this.app.listen(this.port, () => {
         console.log(`App running on port ${this.port}.`)
       })
