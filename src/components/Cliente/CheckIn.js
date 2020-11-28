@@ -9,23 +9,11 @@ import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
 export class CheckIn extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            latitude: '',
-            longitude: ''
-        };
-
-        this.getCurrentPos = this.getCurrentPos.bind(this);
-    }
-
     componentDidMount() {
         if(navigator.geolocation){
-            navigator.geolocation.getCurrentPosition(position => {
+            navigator.geolocation.getCurrentPosition(function(position) {
                 console.log("Latitude is :", position.coords.latitude);
                 console.log("Longitude is :", position.coords.longitude);
-                this.setState({latitude: position.coords.latitude,
-                                    longitude: position.coords.longitude})
             }, function error(msg) {alert('Please enable your GPS position feature.');},
                 {maximumAge:10000, timeout:5000, enableHighAccuracy: true});
 
@@ -37,23 +25,11 @@ export class CheckIn extends Component {
         });
 
         L.Marker.prototype.options.icon = DefaultIcon;
+        //L.TileLayer = 'http://c.tile.stamen.com/watercolor/${z}/${x}/${y}.jpg';
+       // L.tileLayer()
+
         console.log(this.measureDistance(53.575337, 10.034002, 53.575, 10.0342))
         //53.575, 10.0342 FIXED POINT
-    }
-
-    componentWillUpdate(){
-        this.getGeoLocation()
-    }
-
-    getCurrentPos(){
-        if(navigator.geolocation){
-            navigator.geolocation.getCurrentPosition(function(position) {
-                    console.log("Latitude is :", position.coords.latitude);
-                    console.log("Longitude is :", position.coords.longitude);
-                    return [position.coords.latitude, position.coords.longitude]
-                }, function error(msg) {alert('Please enable your GPS position feature.');},
-                {maximumAge:10000, timeout:5000, enableHighAccuracy: true});
-        }
     }
 
     measureDistance(lat1, lon1, lat2, lon2){  // generally used geo measurement function
@@ -68,23 +44,7 @@ export class CheckIn extends Component {
         return d * 1000; // meters
     }
 
-    getGeoLocation = () => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                position => {
-                    this.setState({
-                        latitude: position.coords.latitude,
-                        longitude: position.coords.longitude
-                    })
-                }, function error(msg) {},
-                {maximumAge:10000, timeout:5000, enableHighAccuracy: true});
-
-        }
-    }
-
     render() {
-
-
         return (
             <div className="customerOptionsContainer">
                 <div className="customerOptionsHijo">
@@ -106,9 +66,7 @@ export class CheckIn extends Component {
                                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                 />
 
-
-
-                                <Marker position={[this.state.latitude, this.state.longitude]} src = "../img/marker-icon.png">
+                                <Marker position={[53.575, 10.0342]} src = "../img/marker-icon.png">
                                     <Popup>
                                         A pretty CSS3 popup. <br /> Easily customizable.
                                     </Popup>
