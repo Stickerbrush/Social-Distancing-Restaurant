@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY ./back-end .
 RUN npm install
+USER myuser
 
 #If you wanna test with compose, enable the follow lines
 
