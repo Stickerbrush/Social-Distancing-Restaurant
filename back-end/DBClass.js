@@ -10,7 +10,7 @@ const io = require("socket.io")(chat_server, {
   }
 });
 
-const chat_port = process.env.PORT+1 || 5001
+const chat_port = 6000
 
 chat_server.listen(chat_port, () => console.log(`Chat server started on port ${chat_port}`))
 
@@ -42,7 +42,7 @@ class DBClass {
      this.app = express();
      //this.chat_server = http.createServer(this.app);
     // this.io = socketio(this.chat_server);
-     this.port = process.env.PORT || 5000
+     this.port =  5000
      this.modeloCliente = ControllerFactory.createController("Cliente");
      this.modeloEmpleado = ControllerFactory.createController("Empleado");
      this.modeloReserva = ControllerFactory.createController("Reserva");
