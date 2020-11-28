@@ -7,6 +7,6 @@ RUN npm install
 
 #If you wanna test with compose, enable the follow lines
 
-EXPOSE 5000, 5001, 5432
+EXPOSE 5000 5001 5432
 
 CMD ["node" "db_server.js"]
