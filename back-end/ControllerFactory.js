@@ -1,6 +1,6 @@
 const ModeloEmpleado = require('./modeloEmpleado');
 const ModeloCliente = require('./modeloCliente');
-const ModeloReserva = require('./ModeloReserva');
+const ModeloReserva = require('./modeloReserva');
 const connectionString = 'postgres://yprvbpsgfyfsls:cec675defcad44045415d6932ebc88d04d86080a3e3a4aa348be125256de3bcf@ec2-23-23-36-227.compute-1.amazonaws.com:5432/d3ok37s7f56j5j';
 
 class ControllerFactory {
