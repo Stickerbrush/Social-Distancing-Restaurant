@@ -15,12 +15,12 @@ jobs:
   - task: NodeTool@0
     inputs:
       versionSpec: '10.x'
-    displayName: 'Install Node.js'
+    displayName: 'Deploy_back_end'
 
   - script: |
       cd back-end
       npm install
-      npm run build
+      npm start
     
 
 - job: Deploy_front_end
@@ -34,5 +34,5 @@ jobs:
       cd front-end
       npm install
       npm run build
-  displayName: 'npm install and build'
+  displayName: 'Deploy_front_end'
 
