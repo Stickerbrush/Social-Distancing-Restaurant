@@ -23,7 +23,7 @@ jobs:
       npm run build
     
 
-  - job: Deploy front-end
+- job: Deploy front-end
   steps:
   - task: NodeTool@0
     inputs:
