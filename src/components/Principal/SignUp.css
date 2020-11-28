@@ -1,0 +1,69 @@
+
+
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background:lightblue;
+
+    backdrop-filter: blur(8px);
+    background: rgb(255, 255, 255, 0.5);
+}
+
+.jumbotron{
+    backdrop-filter: blur(8px);
+
+    background: rgba(255, 255, 255, 0.2) !important;
+
+}
+
+.jumbotron h1{
+    font-weight: bold;
+    font-size: 100px;
+}
+
+.loginContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5%;
+}
+
+.loginContainerHijo{
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    padding: 2%;
+    display: inline-block;
+    position: relative;
+    background-size: contain;
+    max-width: 35%;
+}
+
+@media screen and (max-width: 900px) {
+    .loginContainerHijo{
+        max-width: 80%;
+        min-width: 35%;
+    }
+}
+
+.text-titulo{
+    color: aliceblue;
+    font-size: xx-large;
+    padding-bottom: 15px;
+}
+
+.check-checkbox{
+    color: aliceblue;
+}
+.check-switch{
+    color: aliceblue;
+}
+
+.btn-primary{
+    color: #fff;
+    background-color: #9bec3d;
+    border-color: #2E4C80;
+}

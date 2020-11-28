@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+  min-height: 100vh;
+  background-image: url("./img/tabla-madera-sobremesa-vacia-fondo-borroso_1253-1584.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.App-header {
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
