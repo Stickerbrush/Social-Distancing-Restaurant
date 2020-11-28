@@ -11,4 +11,4 @@ USER myuser
 
 EXPOSE 5000 5001 5432
 
-CMD ["node", "db_server.js"]
+ENTRYPOINT ["node", "db_server.js"]
