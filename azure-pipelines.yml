@@ -10,7 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 jobs:
-- job: Deploy back-end
+- job: Deploy_back_end
   steps:
   - task: NodeTool@0
     inputs:
@@ -23,7 +23,7 @@ jobs:
       npm run build
     
 
-- job: Deploy front-end
+- job: Deploy_front_end
   steps:
   - task: NodeTool@0
     inputs:
