@@ -1,7 +1,5 @@
 const express = require('express');
-const modeloEmpleado = require('./modeloEmpleado');
-const modeloCliente = require('./modeloCliente');
-const DBClass = require("./DBClass.js");
+const DBClass = require("./DBClass");
 
 let DBClassInstance = DBClass.getInstance();
 DBClassInstance.connect();
