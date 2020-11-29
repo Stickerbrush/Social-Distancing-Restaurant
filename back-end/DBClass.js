@@ -10,7 +10,7 @@ const io = require("socket.io")(chat_server, {
   }
 });
 
-const chat_port = 6000
+const chat_port = 5001
 
 chat_server.listen(chat_port, () => console.log(`Chat server started on port ${chat_port}`))
 
@@ -20,6 +20,14 @@ io.on('connection', (socket) => {
   socket.on('disconnect', () => {
     console.log("user left");
   })
+
+  socket.on('join', ({nombreCliente, clienteMesa}) => {
+    let nombre = nombreCliente;
+    let room = clienteMesa;
+      socket.join(room)
+      console.log(`User has joined room mesa ${room}`)
+  })
+  socket.emit('message', "Boca sho te amo")
 
   socket.on('sendMessage', (message) => {
     console.log(message)
