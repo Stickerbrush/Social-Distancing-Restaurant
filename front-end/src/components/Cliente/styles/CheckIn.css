@@ -1,0 +1,68 @@
+
+
+.search-reservation{
+    display: flex;
+    justify-content: space-around;
+}
+
+.logo-container-reservation{
+    display: list-item;
+    justify-content: right;
+}
+
+.buttons-imputs{
+    display: inline-grid;
+}
+
+.buttons-group{
+    justify-content: space-around;
+    padding-top: 1pc
+}
+
+
+.customerOptionsContainer{
+    display: block;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1pc;
+}
+
+.customerOptionsHijo{
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    padding-top: 2%;
+    display: inline-block;
+    background-size: contain;
+
+}
+
+.leaflet-container{
+    height: 400px;
+    width: 400px;
+    display: inline-block;
+
+
+}
+
+@media screen and (max-width: 900px) {
+    .customerOptionsHijo{
+        max-width: 95%;
+        min-width: 35%;
+    }
+
+    .leaflet-container{
+        max-width:100%;
+        min-width: 35%;
+    }
+}
+
+::marker {
+    color: rgba(0, 0, 255, 0);
+    font-size: 1.2em;
+  }
+
+.table-container{
+    overflow: auto;
+}

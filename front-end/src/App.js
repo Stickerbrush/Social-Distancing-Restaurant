@@ -7,7 +7,10 @@ import BarNav from "./components/Principal/BarNav";
 import CustomerOptions from "./components/Cliente/CustomerOptions";
 import CheckIn from "./components/Cliente/CheckIn";
 import SignUp from "./components/Principal/SignUp";
+import ChatGroup from "./components/Cliente/ChatGroup";
 import ReservationManagement from "./components/Cliente/ReservationManagement";
+import RestaurantMenu from "./components/Cliente/RestaurantMenu";
+
 
 export class App extends React.Component {
 
@@ -18,6 +21,8 @@ export class App extends React.Component {
             nombreCliente: "",
             telefonoCliente: "",
             cedulaCliente: "",
+            clienteCheckedIn: false,
+            clienteMesa: '',
 
             trabajadorLoggeado: false,
             nombreTrabajador: "",
@@ -28,6 +33,7 @@ export class App extends React.Component {
 
         this.handleLogin = this.handleLogin.bind(this);
         this.handleLogout = this.handleLogout.bind(this);
+        this.handleCheckin = this.handleCheckin.bind(this);
     }
 
 
@@ -36,16 +42,30 @@ export class App extends React.Component {
         if(token){
             const user_type = jwt.verify(token, 'theGame').tipo_usuario
             switch (user_type){
-                case 1: const nombre_cliente = jwt.verify(token, 'theGame').nombre_cliente
+                case 1: const checkin_token = localStorage.getItem('token-checkin')
+                        const nombre_cliente = jwt.verify(token, 'theGame').nombre_cliente
                         const telefono_cliente = jwt.verify(token, 'theGame').telefono_cliente
                         const cedula_cliente = jwt.verify(token, 'theGame').cedula_cliente
+                        if(checkin_token){
+                            const checkin_value = jwt.verify(checkin_token, 'theCheckin').cliente_checked_in
+                            const mesa = jwt.verify(checkin_token, 'theCheckin').cliente_mesa
+                            this.setState({
+                                clienteLoggeado: true,
+                                nombreCliente:  nombre_cliente,
+                                telefonoCliente: telefono_cliente,
+                                cedulaCliente:  cedula_cliente,
+                                clienteCheckedIn: checkin_value,
+                                clienteMesa: mesa
+                            }); break;
+                        } else {
 
-                    this.setState({
-                            clienteLoggeado: true,
-                            nombreCliente:  nombre_cliente,
-                            telefonoCliente: telefono_cliente,
-                            cedulaCliente:  cedula_cliente
-                        }); break;
+                            this.setState({
+                                clienteLoggeado: true,
+                                nombreCliente:  nombre_cliente,
+                                telefonoCliente: telefono_cliente,
+                                cedulaCliente:  cedula_cliente,
+                            }); break;
+                        }
 
                 case 2: const nombre_trabajador = jwt.verify(token, 'theGame').nombre_trabajador
                         this.setState({
@@ -95,6 +115,7 @@ export class App extends React.Component {
 
     handleLogout(){
         localStorage.removeItem('token-login')
+        localStorage.removeItem('token-checkin')
         this.setState({
             clienteLoggeado: false,
             nombreCliente: "",
@@ -104,36 +125,63 @@ export class App extends React.Component {
             nombreTrabajador: "",
 
             adminLoggeado: false,
-            nombreAdmin: ""
+            nombreAdmin: "",
+            clienteCheckedIn: false
+        })
+    }
+
+    handleCheckin(value, mesa){
+        const token = {cliente_checked_in: value,
+                       cliente_mesa: mesa}
+        localStorage.setItem('token-checkin', jwt.sign(token, 'theCheckin'))
+        this.setState({
+            clienteCheckedIn: value,
+            clienteMesa: mesa
         })
     }
 
     render() {
         var is_logged = this.state.trabajadorLoggeado || this.state.clienteLoggeado;
+        console.log(this.state.clienteCheckedIn)
         return (
             <div className="App">
                 <BrowserRouter >
                     <Route render={() => <BarNav  isLogged = {is_logged}
-                                                  handleLogout = {this.handleLogout}/>} />
+                                                  handleLogout = {this.handleLogout}
+                                                  clienteCheckedIn = {this.state.clienteCheckedIn}/>} />
 
-                    {(is_logged) ? <Switch>
-                                        <Route exact path="/" render={() => <Redirect to="/mainmenu"/>}/>
-                                        <Route path="/mainmenu" render={() => <CustomerOptions nombreCliente = {this.state.nombreCliente}
-                                                                                               telefonoCliente = {this.state.telefonoCliente}
-                                                                                               />}/>
-                                        <Route path="/checkin" render= {() => <CheckIn/>} />
-                                        <Route path="/reservations" render= {() => <ReservationManagement nombreCliente = {this.state.nombreCliente}
-                                                                                                          telefonoCliente = {this.state.telefonoCliente}
-                                                                                                          cedulaCliente = {this.state.cedulaCliente} />} />
-                                        <Route render={() => <Redirect to={{pathname: "/"}} />} />
-                                   </Switch>
-                                 : <Switch>
-                                        <Route exact path="/" render={() => <Redirect to="/login"/>}/>
-                                        <Route path="/login"  render={() => <Login handleLogin = {this.handleLogin} /> }/>
-                                        <Route path="/register" render={() => <SignUp handleLogin= {this.handleLogin} /> } />
-                                        <Route render={() => <Redirect to={{pathname: "/"}} />} />
-                                   </Switch>
-                   }
+                    {is_logged ? <Switch>
+                            {this.state.clienteCheckedIn ? <Route exact path="/" render={() => <Redirect to="/chat"/>}/>
+                                                                    : <Route exact path="/" render={() => <Redirect to="/mainmenu"/>}/> }
+                            <Route exact path="/" render={() => <Redirect to="/mainmenu"/> } />
+                            <Route path="/mainmenu" render={() => <CustomerOptions nombreCliente = {this.state.nombreCliente}
+                                                                                   telefonoCliente = {this.state.telefonoCliente}
+                            />}/>
+                            <Route path="/checkin" render= {() => <CheckIn  nombreCliente = {this.state.nombreCliente}
+                                                                            telefonoCliente = {this.state.telefonoCliente}
+                                                                            cedulaCliente = {this.state.cedulaCliente}
+                                                                            handleCheckin = {this.handleCheckin}/>} />
+                            <Route path="/reservations" render= {() => <ReservationManagement nombreCliente = {this.state.nombreCliente}
+                                                                                              telefonoCliente = {this.state.telefonoCliente}
+                                                                                              cedulaCliente = {this.state.cedulaCliente} />} />
+                            <Route path="/chat" render= {() => <ChatGroup nombreCliente = {this.state.nombreCliente}
+                                                                          telefonoCliente = {this.state.telefonoCliente}
+                                                                          cedulaCliente = {this.state.cedulaCliente}
+                                                                          clienteMesa = {this.state.clienteMesa}
+                                                                          clienteCheckedIn = {this.state.clienteCheckedIn}/>  } />
+                            <Route path="/ordermenu" render= {() => <RestaurantMenu nombreCliente = {this.state.nombreCliente}
+                                                                                    telefonoCliente = {this.state.telefonoCliente}
+                                                                                    cedulaCliente = {this.state.cedulaCliente}
+                                                                                    clienteMesa = {this.state.clienteMesa}/>  } />
+                            <Route render={() => <Redirect to={{pathname: "/"}} />} />
+                        </Switch>
+                        : <Switch>
+                            <Route exact path="/" render={() => <Redirect to="/login"/>}/>
+                            <Route path="/login"  render={() => <Login handleLogin = {this.handleLogin} /> }/>
+                            <Route path="/register" render={() => <SignUp handleLogin= {this.handleLogin} /> } />
+                            <Route render={() => <Redirect to={{pathname: "/"}} />} />
+                        </Switch>
+                    }
                 </BrowserRouter>
             </div>
         );

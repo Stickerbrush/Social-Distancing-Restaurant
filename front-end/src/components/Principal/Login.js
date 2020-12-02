@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, Form } from 'react-bootstrap';
 import axios from "axios";
 import "../../global";
-import "./LoginStyle.css";
+import "./styles/LoginStyle.css";
 import {Redirect} from "react-router-dom";
 
 

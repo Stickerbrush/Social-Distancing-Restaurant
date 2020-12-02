@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import { Button, Form } from 'react-bootstrap';
 import axios from "axios";
-import "./SignUp.css";
+import "./styles/SignUp.css";
 import "../../global";
 
 export class SignUp extends Component {

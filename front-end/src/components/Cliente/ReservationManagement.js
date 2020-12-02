@@ -1,15 +1,10 @@
 import React, { Component } from "react";
 import { Table, Button, Form } from 'react-bootstrap';
-import "./ReservationManagement.css";
+import "./styles/ReservationManagement.css";
 import axios from "axios";
 
 export class ReservationManagement extends Component {
- /*
- updateMapa(){
 
-    }
-
-  */
     constructor(props) {
         super(props)
         this.state = {

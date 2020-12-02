@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button } from 'react-bootstrap';
-import "./CustomerOptions.css";
+import "./styles/CustomerOptions.css";
 import {Redirect, Route, Switch} from "react-router-dom";
 import ChatGroup from "./ChatGroup";
 export class CustomerOptions extends Component {

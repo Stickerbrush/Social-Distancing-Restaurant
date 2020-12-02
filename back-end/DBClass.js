@@ -10,12 +10,13 @@ const io = require("socket.io")(chat_server, {
   }
 });
 
-const chat_port = 5001
+/* CHAT SOCKET */
 
+const chat_port = 5001
 chat_server.listen(chat_port, () => console.log(`Chat server started on port ${chat_port}`))
 
 io.on('connection', (socket) => {
-  console.log('User connected');
+  console.log('User connected to chat');
 
   socket.on('disconnect', () => {
     console.log("user left");
@@ -32,6 +33,35 @@ io.on('connection', (socket) => {
   socket.on('sendMessage', (message) => {
     console.log(message)
     socket.emit('message', "Boca sho te amo")
+  })
+})
+
+/* MAP SOCKET */
+const map_app = express();
+const map_server = http.createServer(map_app);
+const io2 = require("socket.io")(map_server, {
+  cors: {
+    origin: '*',
+  }
+});
+
+let positions = {};
+const map_port = 5002
+map_server.listen(map_port, () => console.log(`Map server started on port ${map_port}`))
+
+io2.on('connection', (socket) => {
+  console.log('User entered the restaurant');
+
+  socket.on('disconnect', () => {
+    console.log("User has left the restaurant");
+  })
+
+
+  socket.on('sendPosition', (payload) => {
+    cedulaCliente = payload.cedulaCliente;
+    position = payload.position;
+    positions[cedulaCliente] = position;
+    socket.emit('pos', Object.values(positions))
   })
 })
 
@@ -54,6 +84,7 @@ class DBClass {
      this.modeloCliente = ControllerFactory.createController("Cliente");
      this.modeloEmpleado = ControllerFactory.createController("Empleado");
      this.modeloReserva = ControllerFactory.createController("Reserva");
+     this.modeloPlato = ControllerFactory.createController("Plato");
     }
 
     connect() {
@@ -133,7 +164,6 @@ class DBClass {
           } else if (response === 3){
             res.status(500).send("Solo puede tener una reservación por día");
           } else {
-            console.log("reposaito");
             console.log(response);
             res.status(200).send(response);
           }
@@ -154,10 +184,21 @@ class DBClass {
       })
 
       this.app.delete('/reservasBorrar/:cedula_cliente/:fecha/:hora', (req, res) => {
-        console.log("REALGS")
         this.modeloReserva.deleteReserva(req.params.cedula_cliente,
                                          req.params.fecha,
                                          req.params.hora)
+        .then(response => {
+          res.status(200).send(response);
+        })
+        .catch(error => {
+          res.status(500).send(error);
+        })
+      })
+
+      /*----------------------PLATOS------------------------  */
+
+      this.app.get('/platos', (req, res) => {
+        this.modeloPlato.getPlatos()
         .then(response => {
           res.status(200).send(response);
         })

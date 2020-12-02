@@ -1,0 +1,99 @@
+.menuContainer{
+    display: flex;
+    justify-content: center;
+    background-size: contain;
+}
+
+.menuContainerHijo{
+    border-radius: 20px 20px 20px 20px;
+    -moz-border-radius: 20px 20px 20px 20px;
+    -webkit-border-radius: 20px 20px 20px 20px;
+    display: inline-block;
+    position: relative;
+    background-size: contain;
+    margin-bottom: 50px;
+    margin-top:2%;
+    width: 80%;
+
+}
+
+@media screen and (max-width: 500px) {
+    .menuContainerHijo{
+        width: auto;
+        max-width: 80%;
+        padding: 0% 2% 0% 2%;
+    }
+
+}
+
+.card-columns{
+    max-width: 98%;
+}
+
+@media screen and (max-width: 750px){
+    .card-columns .food-card.card {
+        display: inline-block !important;
+    }
+
+    .card-columns {
+        column-count: 1 !important;
+        -webkit-column-gap: 1.25rem!important;
+        -moz-column-gap: 1.25rem!important;
+        grid-column-gap: 1.25rem!important;
+        column-gap: 1.25rem!important;
+        orphans: 1!important;
+        widows: 1!important;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .card-columns .food-card.card {
+        display: inline-block !important;
+        width: 100% !important;
+    }
+}
+
+@media screen and  (max-width: 992px){
+
+    body > .main-nav {
+        overflow: scroll;
+    }
+
+}
+.menu-card{
+    background-color: rgba(0, 0, 0, 0.658);
+    color: rgb(255, 255, 255);
+    border-radius: 10px 10px 15px 15px;
+    text-align: center;
+    box-shadow: 0 2px 10px 1px #b5b5b5;
+    margin: 0 0 0 0;
+}
+.card-body{
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+.products-contaniner{
+    height: 60vh;
+    background-color:rgb(255, 255, 255);
+}
+
+.menu-card-body{
+    border-radius: 0 0 10px 10px;
+    background-color: rgb(255, 255, 255);
+    padding: 15px 0 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-card-header{
+    padding: 15px 0 0px;
+}
+
+.menu-title{
+    margin-bottom: 30px;
+}
+
+.nav-link{
+    color: #b5b5b5;
+}

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Navbar, Nav } from 'react-bootstrap';
-import { Redirect } from "react-router-dom";
-import "./BarNav.css";
+import { Redirect, Link } from "react-router-dom";
+import "./styles/BarNav.css";
 import logo from "../../img/Logo-MataHambre.svg";
 import { withRouter } from 'react-router'
+import DropdownBill from "../Cliente/DropdownBill";
 
 class BarNav extends Component {
     constructor(props) {
@@ -45,9 +46,13 @@ class BarNav extends Component {
                     </Nav>
                     <Nav>
 
-                        {this.props.isLogged ? [ <Nav.Link key = "1" href="/mainmenu" >Inicio</Nav.Link>,
-                                                <Nav.Link key = "2" onClick={this.props.handleLogout} >Cerrar sesión</Nav.Link>
-                                                ]
+                        {this.props.isLogged ? this.props.clienteCheckedIn ? [ <Link key = "1"to="/chat">Inicio </Link>,
+                                                                                <Link key = "2" to="/ordermenu">Menu </Link>,
+                                                                                <DropdownBill key = "3"/>,
+                                                                                <Link key = "4" to="/ordermenu" onClick={this.props.handleLogout} >Pagar</Link>]
+                                                                            :[ <Nav.Link key = "1" href="/mainmenu" >Inicio</Nav.Link>,
+                                                                                <Nav.Link key = "2" onClick={this.props.handleLogout} >Cerrar sesión</Nav.Link>]
+
                                              : [<Nav.Link key = "1" href="/register">Registrarse</Nav.Link>,
                                                 <Nav.Link key = "2" href="/login">Acceder</Nav.Link>]
                         }

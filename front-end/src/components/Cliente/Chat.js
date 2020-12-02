@@ -1,32 +1,62 @@
 
 import React, { Component } from 'react';
-import { Widget, addResponseMessage } from 'react-chat-widget';
+import {Widget, addResponseMessage, toggleWidget} from 'react-chat-widget';
+import io from 'socket.io-client';
 
 import 'react-chat-widget/lib/styles.css';
-import './Chat.css';
-
-import logo from "../../img/Logo-MataHambre.svg";
-
+import './styles/Chat.css';
+import logo_dark from "../../img/Logo-MataHambreDark.png";
+let socket;
 class Chat extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      meseroAtendiendo: true
+    }
+    socket = io.connect(global.chat_addr);
+  }
+
+
   componentDidMount() {
-    addResponseMessage("¡Bienvenido a este increíble chat!");
+    let nombreCliente = this.props.nombreCliente
+    let clienteMesa = this.props.clienteMesa
+    socket.emit('join', {nombreCliente, clienteMesa})
+    addResponseMessage("¡Bienvenido al restaurante MataHambre!");
+    addResponseMessage("En breve será atendido por uno de nuestros meseros")
+    toggleWidget()
+    socket.on('message', (message) => {
+      addResponseMessage(message)
+    })
+  }
+
+  componentDidUpdate() {
+
   }
 
   handleNewUserMessage = (newMessage) => {
-    console.log(`New message incomig! ${newMessage}`);
-    // Now send the message throught the backend API
+
+    socket.emit('sendMessage', newMessage)
+
   }
 
   render() {
     return (
-      <div className="App">
+      <div>
+
         <Widget
           handleNewUserMessage={this.handleNewUserMessage}
-          profileAvatar={logo}
-          title="Chat"
-          subtitle="Matahambre Restaurante"
-          fullScreenMode={false}
-        />
+          profileAvatar={logo_dark}
+          titleAvatar={logo_dark}
+          title=""
+          subtitle="Matahambre"
+          showCloseButton={true}
+          disabled={ true}
+        >
+
+
+        </Widget>
+
       </div>
     );
   } 

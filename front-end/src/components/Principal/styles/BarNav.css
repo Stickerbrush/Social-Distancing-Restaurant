@@ -1,0 +1,35 @@
+@font-face {
+    font-family: Yellowtail;
+    src:url("../../../fonts/Yellowtail-Regular.ttf");
+}
+
+.Navbar{
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.text-matahambre{
+    color: #FF834E;
+    font-family: Yellowtail;
+    font-size: xx-large;
+    padding-top: 4%;
+}
+
+.Navbar a{
+ color: rgba(255, 255, 255, 0.5);
+    text-decoration: none !important;
+    display: block;
+    padding: 0.5rem 1rem;
+
+}
+.Navbar a:hover{
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none !important;
+    display: block;
+    padding: 0.5rem 1rem;
+
+}
+
+.logo-container{
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,78 @@
+.btn-primary{
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.navbar-nav .dropdown-menu{
+    background: rgba(0, 0, 0, 0.5);
+    min-width: 14rem;
+}
+
+@media screen and  (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav .dropdown-menu {
+        position: absolute;
+        top: 66px;
+        left: -33px;
+    }
+
+
+}
+
+.colProducto{
+    width: 65% !important;
+    max-width: 65% !important;
+
+    font-size: small;
+    text-align: center;
+
+}
+
+.colProductoHijo{
+    width: 65% !important;
+    max-width: 65% !important;
+
+    font-size: small;
+
+}
+
+@media screen and (min-width: 576px){
+    .colProducto {
+        flex-basis: 0;
+        flex-grow: 1;
+
+    }
+
+
+}
+
+@media screen and (max-width: 992px){
+    .colProductoHijo {
+        text-align: center;
+
+    }
+
+
+}
+
+
+
+.colPrecio{
+    width: 35% !important;
+    max-width: 35% !important;
+    padding-left: 5px !important;
+
+    font-size: small;
+    text-align: center;
+
+}
+
+.colPrecioHijo{
+    width: 35% !important;
+    max-width: 35% !important;
+    padding-left: 5px !important;
+    text-align: left;
+    font-size: small;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
